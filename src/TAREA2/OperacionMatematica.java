@@ -1,5 +1,4 @@
 package TAREA2;
-import java.util.Random;
 
 public class OperacionMatematica {
 
@@ -37,19 +36,34 @@ public class OperacionMatematica {
 	        return -1; 
 	    }
 	}
+	public String bin(int x) {
+		String bin=" ";
+		while(x>0) {
+			if(x%2==0) {
+				bin="0"+bin;
+				
+			}else {
+				bin="1"+bin;
+			}
+			x=x/2;
+		}
+		return bin;
+	}
 	public void VectorRandom(int n,int init,int end ) {
-		int vec[] = new int[n];
-		int van=0;
-		for(int j=0;j<n;j++) {
-			int x =(int) Math.random();
-			for(int i=2; i<x; i++) {				
-				if(x%i==0) {	
-					van++;
-					if(van==1) {
-						
-						System.out.println(vec[j]=x);
-					}
+		int[] vec = new int[n];
+		int ran = 0;
+	    int j=0;
+		while(j<n) {
+			boolean primo=true;
+			ran =(int) Math.floor(Math.random()*(init-end+1)+end);
+			for(int i=2;(primo) && (i!=ran); i++) {				
+				if(ran%i==0) {	
+					primo=false;
 				}
+			}
+			if((primo) && (ran>init) && (ran<end)) {
+				System.out.print((vec[j]=ran)+" ");	
+				j++;
 			}
 		}
 	}
